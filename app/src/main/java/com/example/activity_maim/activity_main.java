@@ -10,17 +10,13 @@ import android.widget.TextView;
 
 public class activity_main extends AppCompatActivity {
 
+    private TextView funding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.material_design_profile_screen_xml_ui_design);
 
-        EditText idText =  (EditText) findViewById(R.id.idText);
-        EditText passwordText = (EditText) findViewById(R.id.birthtext);
-        TextView welcomeMessage = (TextView) findViewById(R.id.welcomeMessage);
-        Button funding = (Button) findViewById(R.id.funding);
-        Button checkfunding = (Button) findViewById(R.id.checkfunding);
-        Button editfunding = (Button) findViewById(R.id.editfunding);
+        funding =  findViewById(R.id.t1);
 
         funding.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,21 +25,6 @@ public class activity_main extends AppCompatActivity {
                 activity_main.this.startActivity(fundingIntent);
             }
 
-        });
-        editfunding.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent editfundingIntent = new Intent(activity_main.this,fundlist.class);
-                activity_main.this.startActivity(editfundingIntent);
-            }
-
-        });
-        checkfunding.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent loginIntent = new Intent(activity_main.this, fundin.class);
-                activity_main.this.startActivity(loginIntent);
-            }
         });
     }
 }

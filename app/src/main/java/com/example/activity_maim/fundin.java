@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -27,12 +28,15 @@ import static com.example.activity_maim.R.id.photoselect;
 
 
 public class fundin extends AppCompatActivity {
+
+    private final int GET_GALLERY_IMAGE = 200;
+    private ImageView imageview;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fundin);
-
+        imageview = (ImageView) findViewById(R.id.imageView);
 
 
         String strDate;
@@ -44,12 +48,12 @@ public class fundin extends AppCompatActivity {
         Datepick.setText(strDate);
 
         EditText content;
-        content = (EditText)findViewById(R.id.content);
+        content = (EditText) findViewById(R.id.content);
         String contents = content.getText().toString();
-        contents = contents.replace("'","''");
+        contents = contents.replace("'", "''");
 
-        final TextView tv = (TextView)findViewById(R.id.textView1);
-        Spinner s = (Spinner)findViewById(R.id.spinner);
+        final TextView tv = (TextView) findViewById(R.id.textView1);
+        Spinner s = (Spinner) findViewById(R.id.spinner);
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
@@ -57,46 +61,32 @@ public class fundin extends AppCompatActivity {
                 tv.setText("카테고리 : " +
                         parent.getItemAtPosition(position));
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
 
-        /*ImageButton btnPhoto;
+        ImageButton btnPhoto;
         btnPhoto = (ImageButton) findViewById(R.id.photoselect);
-        View.OnClickListener listener = new View.OnClickListener() {
+        btnPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case (R.id.photoselect):
+                Intent btnIntent = new Intent(Intent.ACTION_PICK);
+                btnIntent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(btnIntent, GET_GALLERY_IMAGE);
+            }
+        });
 
-                        Intent intent3 = new Intent(Intent.ACTION_PICK);
-                        intent3.setType(MediaStore.Images.Media.CONTENT_TYPE);
-                        startActivityForResult(intent3, PICK_FROM_ALBUM);
+            }
+            protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-                        break;
+                if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+                    Uri selectedImageUri = data.getData();
+                    imageview.setImageURI(selectedImageUri);
                 }
             }
-        };
-    }
-    ImageView simpleview;
-    Bitmap image_bitmap;
-    simpleview = (ImageView) findViewByld(R.id.Simpleview);
-    int width;
-    width = getWindowManager(),getDefaultDisplay(),getWidth();
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_PICKALBUM){
-            if (requestCode == RESULT_OK){
-                try {
-                    Uri mlmageUri = data.getData();
-                    String realpaths = getRealImagepath(mlmageUri);
-
-                    BitmapFactory.Options options = new BitmapFactory.Options();
-                    options.inSampleSize = 2;
-                    image_bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(mlmageUri), null,options);
-                    int resizeWidth = width;
-                    int resizeHeight = width * image_bitmap.getHeight()/image_bitmap.getWidth();
-                    image_bitmap = Bitmap.createScaledBitmap(image_bitmap, resizeWidth, resizeHeight, true);*/
-}}
+        }
 

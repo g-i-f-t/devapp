@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="91dp">
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/date"
@@ -22,12 +22,29 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp" />
 
+        <Button
+            android:id="@+id/savefund"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="SAVE" />
+
         <ImageButton
             android:id="@+id/photoselect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             app:srcCompat="@android:drawable/ic_menu_camera" />
+
+        <EditText
+            android:id="@+id/contentname"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="@+id/content"
+            android:background="@null"
+            android:gravity="top|start"
+            android:text="제목을 입력하세요...." />
 
         <EditText
             android:id="@+id/content"
@@ -48,43 +65,103 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="30dp"
-                android:layout_toStartOf="@+id/SimpleView"
-                android:layout_toLeftOf="@+id/SimpleView"
-                android:gravity="center"
-                android:text="카테고리 선택"
-                android:textColor="#024271"
-                android:id="@+id/textView1"/>
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="10dp"
-                android:layout_alignParentLeft="true"
-                android:entries="@array/city"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/SimpleView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_toEndOf="@+id/spinner"
-                android:adjustViewBounds="true"
-                android:layout_toRightOf="@+id/spinner" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@+id/SimpleView"
+                        android:layout_toLeftOf="@+id/SimpleView"
+                        android:gravity="center"
+                        android:text="카테고리 선택"
+                        android:textColor="#024271" />
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="10dp"
+                        android:entries="@array/city" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/SimpleView"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="left"
+                            android:layout_toEndOf="@+id/spinner"
+                            android:layout_toRightOf="@+id/spinner"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/ic_image" />
+
+                        <ImageView
+                            android:id="@+id/SimpleView2"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/ic_image" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/SimpleView4"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_toEndOf="@+id/spinner"
+                            android:layout_toRightOf="@+id/spinner"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/ic_image" />
+
+                        <ImageView
+                            android:id="@+id/SimpleView3"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_toEndOf="@+id/spinner"
+                            android:layout_toRightOf="@+id/spinner"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/ic_image" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
 
         </RelativeLayout>
 

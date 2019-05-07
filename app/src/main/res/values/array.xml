@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="city">
+        <item >어드벤처</item>
+        <item >아케이드</item>
+        <item >스포츠</item>
+        <item >MMORPG</item>
+        <item >롤플레잉</item>
+        <item >시뮬레이션</item>
+        <item >퍼즐</item>
+        <item >MOBA</item>
+    </string-array>
+</resources>
+
+

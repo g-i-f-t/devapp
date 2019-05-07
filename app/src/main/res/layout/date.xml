@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+
+        android:orientation="horizontal"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="200dp"
+
+        android:layout_gravity="center">
+
+
+        <EditText
+
+            android:layout_width="60dp"
+
+            android:layout_height="wrap_content"
+
+            android:id="@+id/year" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+
+            android:text="년"
+
+            android:id="@+id/textView3" />
+
+
+        <EditText
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:id="@+id/month" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+
+            android:text="월"
+
+            android:id="@+id/textView4" />
+
+
+        <EditText
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:id="@+id/day" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+
+            android:text="일"
+
+            android:id="@+id/textView5" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:orientation="horizontal"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:baselineAligned="false"
+
+        android:layout_marginTop="150dp"
+
+        android:layout_gravity="center">
+
+
+        <Button
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:text="설정"
+
+            android:id="@+id/bir_sub"
+
+            android:layout_marginRight="10dp"/>
+
+
+        <Button
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:text="닫기"
+
+            android:id="@+id/bir_cansle"
+
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

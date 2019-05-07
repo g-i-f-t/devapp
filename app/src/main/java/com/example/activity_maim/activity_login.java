@@ -9,37 +9,37 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import android.widget.Toast;
 
 public class activity_login extends AppCompatActivity {
 
+    private TextView signup;
+    private Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final EditText idtext = (EditText) findViewById(R.id.idText);
-        EditText passwordText = (EditText) findViewById(R.id.passwordtext);
-        Button loginButtton = (Button) findViewById(R.id.loginButton);
-        TextView registerButton = (TextView) findViewById(R.id.registerButton);
-
-        loginButtton.setOnClickListener(new View.OnClickListener() {
+        signup=findViewById(R.id.signup);
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent registerIntent = new Intent(activity_login.this, activity_register.class);
+                activity_login.this.startActivity(registerIntent);
 
-
+            }
+        });
+        btn=findViewById(R.id.loginbutton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent loginIntent = new Intent(activity_login.this, activity_main.class);
                 activity_login.this.startActivity(loginIntent);
             }
         });
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerIntent = new Intent(activity_login.this, activity_register.class);
-                activity_login.this.startActivity(registerIntent);
-            }
-        });
+
     }
 
 

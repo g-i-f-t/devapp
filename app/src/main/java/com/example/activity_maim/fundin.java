@@ -54,11 +54,25 @@ public class fundin extends AppCompatActivity {
 
         final TextView tv = (TextView) findViewById(R.id.textView1);
         Spinner s = (Spinner) findViewById(R.id.spinner);
+        Spinner s1 = (Spinner) findViewById(R.id.spinner1);
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 tv.setText("카테고리 : " +
+                        parent.getItemAtPosition(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        final TextView tv1 = (TextView) findViewById(R.id.textView2);
+        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                tv1.setText("펀딩기간 : " +
                         parent.getItemAtPosition(position));
             }
 

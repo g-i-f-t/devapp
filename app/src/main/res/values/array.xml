@@ -10,6 +10,14 @@
         <item >퍼즐</item>
         <item >MOBA</item>
     </string-array>
+
+    <string-array name="city1">
+        <item >1개월</item>
+        <item >2개월</item>
+        <item >3개월</item>
+        <item >4개월</item>
+        <item >5개월</item>
+    </string-array>
 </resources>
 
 

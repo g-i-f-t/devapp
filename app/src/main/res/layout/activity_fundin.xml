@@ -14,6 +14,12 @@
         tools:layout_editor_absoluteX="174dp"
         tools:layout_editor_absoluteY="0dp">
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            app:srcCompat="@color/design_default_color_primary" />
+
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
@@ -46,19 +52,27 @@
             android:gravity="top|start"
             android:text="제목을 입력하세요...." />
 
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            app:srcCompat="@color/design_default_color_primary" />
+
         <EditText
             android:id="@+id/content"
             android:layout_width="fill_parent"
-            android:layout_height="330dp"
+            android:layout_height="221dp"
             android:layout_margin="5dp"
             android:background="@null"
             android:gravity="top|start"
-            android:text="내용을 입력하세요...." />
+            android:text="내용을 입력하세요...."
+            />
 
-        <TextView
-            android:layout_width="fill_parent"
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:background="@color/colorPrimaryDark" />
+            app:srcCompat="@color/design_default_color_primary" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -68,7 +82,9 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp">
 
 
                 <LinearLayout
@@ -99,6 +115,69 @@
                         android:layout_alignParentLeft="true"
                         android:layout_marginTop="10dp"
                         android:entries="@array/city" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        app:srcCompat="@color/design_default_color_primary" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@+id/SimpleView"
+                        android:layout_toLeftOf="@+id/SimpleView"
+                        android:gravity="center"
+                        android:text="펀딩 기간 설정"
+                        android:textColor="#024271" />
+
+                    <Spinner
+                        android:id="@+id/spinner1"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="10dp"
+                        android:entries="@array/city1" />
+
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        app:srcCompat="@color/design_default_color_primary" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="39dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@+id/SimpleView"
+                        android:layout_toLeftOf="@+id/SimpleView"
+                        android:gravity="center"
+                        android:text="펀딩 목표 금액 설정"
+                        android:textColor="#024271" />
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="1,000,000"
+                        android:inputType="numberDecimal" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        app:srcCompat="@color/design_default_color_primary" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

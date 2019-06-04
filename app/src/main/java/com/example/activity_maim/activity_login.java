@@ -1,20 +1,18 @@
 package com.example.activity_maim;
 
-import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import com.example.activity_maim.signup.SignUpActivity;
+import com.google.android.material.textfield.TextInputEditText;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +30,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.ExecutionException;
 
-import static android.support.v4.os.LocaleListCompat.create;
+import static androidx.core.os.LocaleListCompat.create;
 
 
 public class activity_login extends AppCompatActivity {
@@ -63,7 +61,7 @@ public class activity_login extends AppCompatActivity {
         et_id = (TextInputEditText)findViewById(R.id.et_id);
         et_pw = (TextInputEditText)findViewById(R.id.et_pw);
 
-
+        bt_Join();
 
 //        signup=findViewById(R.id.signup);
 //        signup.setOnClickListener(new View.OnClickListener() {
@@ -95,8 +93,10 @@ public class activity_login extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
                 registDB rdb = new registDB();
                 JSONObject result = null;
+
                 try {
                      result = rdb.execute(login.toString()).get();
                 } catch (ExecutionException e) {
@@ -104,6 +104,7 @@ public class activity_login extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 try {
                     Log.e("RECV DATA", Integer.toString(result.getInt("code")));
                 } catch (JSONException e) {
@@ -111,13 +112,13 @@ public class activity_login extends AppCompatActivity {
                 }
 
                 try {
-
                     if(result.getInt("code") == 200){
                         Log.e("RESULT","로그인성공");
                         Intent loginIntent = new Intent(activity_login.this, activity_main.class);
                 activity_login.this.startActivity(loginIntent);
                     }
                     else{
+                        Log.e("result",result.toString());
                         Log.e("RESULT","에러"+"CODE");
                         dialog
                                 .setTitle("알림")
@@ -150,13 +151,23 @@ public class activity_login extends AppCompatActivity {
     }
 
 
-    public void bt_Join(View view){
+    public void bt_Join(){
+        TextView join=findViewById(R.id.signup);
+        join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(activity_login.this, SignUpActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+            }
+        });
 
     }
 
 
 
     public class registDB extends AsyncTask<String, Void, JSONObject> {
+
 
         @Override
         protected JSONObject doInBackground(String ... unused) {
@@ -171,13 +182,14 @@ public class activity_login extends AppCompatActivity {
 
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type","application/json");
-                conn.setRequestProperty("charset","UTF-8");
+                conn.setRequestProperty("Charset","UTF-8");
                 conn.setUseCaches(false);
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
 
 
                 /* 안드로이드 -> 서버 파라메터값 전달 */
+                Log.i("registDB", unused[0]);
                 OutputStream outs = conn.getOutputStream();
                 outs.write(unused[0].getBytes("UTF-8"));
                 outs.flush();
@@ -194,6 +206,8 @@ public class activity_login extends AppCompatActivity {
                 {
                     buff.append(line + "\n");
                 }
+
+                Log.i("registDB", buff.toString());
                 result = new JSONObject(buff.toString().trim()) ;
                 System.out.println("RECV DATA" + data);
 

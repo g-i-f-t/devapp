@@ -31,6 +31,9 @@
         <activity android:name=".activity_register" />
         <activity android:name=".activity_main" />
         <activity android:name=".bir_insert" />
+        <activity android:name=".signup.SignUpActivity"/>
+        <activity android:name=".signup.Login_API"/>
+        <activity android:name=".signup.Login_API2"/>
     </application>
 
 </manifest>

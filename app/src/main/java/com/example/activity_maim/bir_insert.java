@@ -1,13 +1,10 @@
 package com.example.activity_maim;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class bir_insert extends AppCompatActivity {
     @Override

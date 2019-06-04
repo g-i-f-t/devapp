@@ -50,7 +50,7 @@ public class Login_API2 extends AppCompatActivity {
 
         //        //URL 설정
 
-        String url = "http://117.17.102.139:8080/addAccount";
+        String url = "http://117.17.102.139:8080/developer";
         JsonObject params = new JsonObject();
         params.addProperty("password", extra.get("password"));
         params.addProperty("name", extra.get("name"));

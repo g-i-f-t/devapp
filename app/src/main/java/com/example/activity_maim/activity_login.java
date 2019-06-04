@@ -177,7 +177,7 @@ public class activity_login extends AppCompatActivity {
             JSONObject result = null;
             try {
                 /* 서버연결 */
-                URL url = new URL("http://117.17.102.139:8080/validateAccount");
+                URL url = new URL("http://117.17.102.139:8080/developer/auth");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
                 conn.setRequestMethod("POST");
@@ -189,7 +189,7 @@ public class activity_login extends AppCompatActivity {
 
 
                 /* 안드로이드 -> 서버 파라메터값 전달 */
-                Log.i("registDB", unused[0]);
+                Log.i("saveGame", unused[0]);
                 OutputStream outs = conn.getOutputStream();
                 outs.write(unused[0].getBytes("UTF-8"));
                 outs.flush();
@@ -207,7 +207,7 @@ public class activity_login extends AppCompatActivity {
                     buff.append(line + "\n");
                 }
 
-                Log.i("registDB", buff.toString());
+                Log.i("saveGame", buff.toString());
                 result = new JSONObject(buff.toString().trim()) ;
                 System.out.println("RECV DATA" + data);
 

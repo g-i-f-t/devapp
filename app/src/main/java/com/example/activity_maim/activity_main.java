@@ -21,6 +21,7 @@ public class activity_main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent fundingIntent = new Intent(activity_main.this,fundlist.class);
+                fundingIntent.putExtra("back","main");
                 activity_main.this.startActivity(fundingIntent);
             }
 

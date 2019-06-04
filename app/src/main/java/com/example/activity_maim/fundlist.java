@@ -33,6 +33,8 @@ public class fundlist extends AppCompatActivity {
         floatingActionButton.setOnClickListener(add1);
         init();
         getData();
+
+
     }
 
 

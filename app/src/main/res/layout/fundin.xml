@@ -81,7 +81,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 android:ems="10"
-                android:hint="예)10000000"
+                android:hint=" 펀딩 금액 입력 예)10,000,000"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -143,9 +143,16 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="이미지 업로드"
                 android:id="@+id/btn"/>
 
-        <LinearLayout
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="투자 계획서 제출" />
+
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">

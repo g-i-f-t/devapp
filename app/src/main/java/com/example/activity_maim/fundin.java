@@ -61,10 +61,14 @@ public class fundin extends AppCompatActivity {
     private Button save;
     private JSONObject obj;
     private int count;
+    private  Button btn2;
     private ImageView[] views;
     EditText content,name;
     JSONObject gamevo;
     JSONArray arr;
+
+
+
 
     ArrayList<String> list;
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -72,6 +76,15 @@ public class fundin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fundin);
+
+        Button btn2=(Button)findViewById(R.id.btn2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/hwyWvekLPSUDSU8o9"));
+                startActivity(intent1);
+            }
+        });
         count=0;
         views=new ImageView[6];
         views[0]=findViewById(R.id.SimpleView0);
@@ -88,6 +101,8 @@ public class fundin extends AppCompatActivity {
         Intent btnIntent = new Intent(Intent.ACTION_PICK);
         btnIntent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         startActivityForResult(btnIntent, GET_GALLERY_IMAGE);
+
+
 
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -113,6 +128,7 @@ public class fundin extends AppCompatActivity {
 
         }
     }
+
 
     private void initImage(){
         Button btn=findViewById(R.id.btn);

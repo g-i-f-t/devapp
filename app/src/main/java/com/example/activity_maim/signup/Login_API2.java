@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.activity_maim.AuthVO;
+import com.example.activity_maim.VO.AuthVO;
 import com.example.activity_maim.R;
 import com.example.activity_maim.Room.AppDatabase;
 import com.example.activity_maim.Room.UserDao;
@@ -48,8 +48,7 @@ public class Login_API2 extends AppCompatActivity {
         Intent prevIntent = getIntent();
         final HashMap<String, String> extra = (HashMap<String, String>) prevIntent.getSerializableExtra("data");
 
-        //        //URL 설정
-
+        //URL 설정
         String url = "http://117.17.102.139:8080/developer";
         JsonObject params = new JsonObject();
         params.addProperty("password", extra.get("password"));

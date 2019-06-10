@@ -1,8 +1,11 @@
-package com.example.activity_maim;
+package com.example.activity_maim.login;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 
+import com.example.activity_maim.HashSerivce;
+import com.example.activity_maim.R;
+import com.example.activity_maim.activity_main;
 import com.example.activity_maim.signup.SignUpActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AlertDialog;
@@ -26,32 +29,16 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.ExecutionException;
-
-import static androidx.core.os.LocaleListCompat.create;
 
 
 public class activity_login extends AppCompatActivity {
 
     private TextView signup;
     private Button btn;
+    private registDB loginTask;
     TextInputEditText et_id, et_pw;
     String sld, sPw;
-
-    public static String sha256(String sPw){
-        String SHA = "";
-        try{
-            MessageDigest sh = MessageDigest.getInstance("SHA-256");
-            sh.update(sPw.getBytes());
-            byte byteData[] =sh.digest();
-            StringBuffer sb = new StringBuffer();
-            for (int i=0; i<byteData.length; i++) sb.append(Integer.toString((byteData[i]&0xff) + 0x100, 16). substring(1));
-            SHA = sb.toString().toUpperCase();
-        } catch (NoSuchAlgorithmException e) {e.printStackTrace(); SHA = null; }
-        return SHA;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +49,6 @@ public class activity_login extends AppCompatActivity {
         et_pw = (TextInputEditText)findViewById(R.id.et_pw);
 
         bt_Join();
-
 //        signup=findViewById(R.id.signup);
 //        signup.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -84,16 +70,13 @@ public class activity_login extends AppCompatActivity {
                 sld = et_id.getText().toString();
                 sPw = et_pw.getText().toString();
 
-                System.out.println(sha256(sPw));
-
                 JSONObject login = new JSONObject();
                 try {
                     login.put("email", sld);
-                    login.put("password", sha256(sPw));
+                    login.put("password", HashSerivce.sha256(sPw));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
                 registDB rdb = new registDB();
                 JSONObject result = null;
 
@@ -124,7 +107,6 @@ public class activity_login extends AppCompatActivity {
                                 .setTitle("알림")
                                 .setMessage("등록중 에러가 발생했습니다! errcode : "+ "code")
                                 .setCancelable(true);
-
 //                                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
 //                                    @Override
 //                                    public void onClick(DialogInterface dialog, int which) {
@@ -149,8 +131,6 @@ public class activity_login extends AppCompatActivity {
         });
 
     }
-
-
     public void bt_Join(){
         TextView join=findViewById(R.id.signup);
         join.setOnClickListener(new View.OnClickListener() {
@@ -167,8 +147,6 @@ public class activity_login extends AppCompatActivity {
 
 
     public class registDB extends AsyncTask<String, Void, JSONObject> {
-
-
         @Override
         protected JSONObject doInBackground(String ... unused) {
 

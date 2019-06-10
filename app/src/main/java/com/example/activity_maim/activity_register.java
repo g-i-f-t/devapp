@@ -15,9 +15,6 @@ import java.util.GregorianCalendar;
 public class activity_register extends AppCompatActivity {
     TextView birthText;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +45,6 @@ public class activity_register extends AppCompatActivity {
                 birthText.setText("생년월일 : " + year + (month + 1) + day);
             }
 
-
-
         birthText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,27 +63,18 @@ public class activity_register extends AppCompatActivity {
                 String sex_ok = sexText.getText().toString();
 
                 Toast.makeText(activity_register.this, "아이디: " + id_ok + "\n이름 :" + name_ok  + "\n"+ birth_ok + "\n성별 :" + sex_ok, Toast.LENGTH_LONG).show();
-
             }
         });
-
     }
 
     @Override
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
 
-
         String bir_year = data.getStringExtra("year_ok");
-
         String bir_month = data.getStringExtra("month_ok");
-
         String bir_day = data.getStringExtra("day_ok");
 
-
         birthText.setText("생년월일 : "+bir_year+bir_month+bir_day);
-
-
     }}

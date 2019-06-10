@@ -36,7 +36,6 @@ public class SplashActivity extends AppCompatActivity {
         profileManager = new ProfileManager();
         limitLoadingTimer = new Timer();
         initView();
-        System.out.println("LoginKey!!!!!:  " + profileManager.getLoginKey(this).get("userSeqNo"));
         makeAlert();
         LogSearch();
     }

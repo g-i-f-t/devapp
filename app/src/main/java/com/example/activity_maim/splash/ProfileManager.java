@@ -43,11 +43,12 @@ public class ProfileManager {
         LoginVO result;
         try {
                     result = netWorkTask.execute().get();
+            System.out.println("@@@@@@@@@@@@@@@"+result.getCode());
                     if (result.getCode() == 200) {
 //                        Profile profile = new Profile();
 //                        profile.setName(result.getName());
 //                        profile.setEmail(result.getEmail());
-
+//
 //                        ((GiftApplication) activity.getApplication()).setUserInfo(profile);
                 callback.callback();
             }
@@ -68,9 +69,11 @@ public class ProfileManager {
         Map<String, String> sendData = null;
         User user = new User();
         UserDao roomUserDao = AppDatabase.getInstance(context).roomUserDao();
+
         // Room에서 get, user정보가 있을경우 서버로 로그인 요청
         try {
           sendData = new RoomLog.getDBTask(roomUserDao).execute(user).get();
+            System.out.println("fdafdsa"+sendData);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

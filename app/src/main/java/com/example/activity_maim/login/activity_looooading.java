@@ -48,7 +48,7 @@ public class activity_looooading extends AppCompatActivity {
 
         Intent resultIntent = new Intent();
 
-        String url = "http://117.17.102.139:8080/validateAccount";
+        String url = "http://117.17.102.139:8080/developer/auth";
         loginTask = new LoginTask(url, email, HashService.sha256(password));
         try {
             AuthVO resultCode = loginTask.execute().get();
@@ -90,6 +90,7 @@ public class activity_looooading extends AppCompatActivity {
         User user = new User();
         user.setAccessToken(resultCode.getAccess_token());
         user.setUserSeqNo(resultCode.getUser_seq_no());
+        System.out.println("SEQNOFD@@@@@@@@!!!!!: "+ resultCode.getUser_seq_no());
         UserDao roomUserDao = AppDatabase.getInstance(this).roomUserDao();
         try {
             new RoomLog.addDBTask(roomUserDao).execute(user).get();
@@ -171,6 +172,22 @@ public class activity_looooading extends AppCompatActivity {
             }
 
             return result;
+        }
+    }
+    private class AccessDBTask extends AsyncTask<User, Void, Void> {
+        private final UserDao roomUserDao;
+
+        public AccessDBTask(UserDao roomUserDao) {
+            this.roomUserDao = roomUserDao;
+        }
+
+        @Override
+        protected Void doInBackground(User... users) {
+            for(User user: users)
+                roomUserDao.add(user);
+            final String result = roomUserDao.getAll().get(0).getAccessToken();
+
+            return null;
         }
     }
 }

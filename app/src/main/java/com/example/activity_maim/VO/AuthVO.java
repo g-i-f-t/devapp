@@ -1,4 +1,4 @@
-package com.example.activity_maim;
+package com.example.activity_maim.VO;
 
 public class AuthVO {
     private Long code;

@@ -21,10 +21,10 @@
         <activity android:name=".fundin" />
         <activity android:name=".fundlist" />
         <activity android:name=".fundingmain" />
-        <activity android:name=".activity_login">
+        <activity android:name=".activity_login"/>
+        <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

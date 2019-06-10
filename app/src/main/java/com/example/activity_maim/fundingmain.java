@@ -25,7 +25,7 @@ public class fundingmain extends AppCompatActivity {
 
 
         progress1.setMax(100);
-        progress1.setProgress(80);
+        progress1.setProgress(45);
 
         if (progress1.getProgress() < 25){
             progress1.setProgressColor(Color.parseColor("#ffe100"));

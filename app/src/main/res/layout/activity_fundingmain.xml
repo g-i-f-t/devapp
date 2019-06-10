@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_login">
+    tools:context=".activity_login"
+    tools:ignore="NamespaceTypo">
 
     <TextView
         android:id="@+id/textView2"
@@ -36,15 +37,16 @@
         android:layout_alignParentRight="true"
         android:layout_gravity="center"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
-        android:gravity="left"
-        android:text="목표금액 : 1,000,000"
+        android:background="@drawable/back"
+        android:gravity="center|left"
+        android:text=" 목표금액 : 1,000,000"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/black"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_1" />
 
@@ -59,19 +61,71 @@
         android:layout_alignParentRight="true"
         android:layout_gravity="center"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:gravity="left"
-        android:text="달성금액 : 450,000"
+        android:background="@drawable/back"
+        android:gravity="center|left"
+        android:text=" 남은기간 : 17일"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/black"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toEndOf="@+id/progress3"
+        app:layout_constraintTop_toBottomOf="@+id/progress" />
+
+    <TextView
+        android:id="@+id/progress4"
+        android:layout_width="164dp"
+        android:layout_height="36dp"
+        android:layout_below="@id/progress"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+
+        android:background="@drawable/back"
+        android:gravity="center|left"
+        android:text=" 참여인원 : 10"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toEndOf="@+id/progress"
         app:layout_constraintTop_toBottomOf="@+id/progress_1" />
 
     <TextView
+        android:id="@+id/progress3"
+        android:layout_width="164dp"
+        android:layout_height="36dp"
+        android:layout_below="@id/progress"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/back"
+        android:gravity="center|left"
+        android:text=" 달성금액 : 450,000"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress" />
+
+    <TextView
+
         android:id="@+id/idText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,68 +146,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <!--<declare-styleable-->
-        <!--android:name="ArcProgress"-->
-        <!--android:layout_width="96dp"-->
-        <!--android:layout_height="75dp"-->
-        <!--android:layout_marginTop="12dp"-->
-        <!--android:layout_marginEnd="64dp"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/progress_1">-->
 
-        <!--<attr-->
-            <!--android:name="arc_progress"-->
-            <!--android:format="23-->
-<!--" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_angle"-->
-            <!--android:format="float" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_stroke_width"-->
-            <!--android:format="50dp" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_max"-->
-            <!--android:format="100" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_unfinished_color"-->
-            <!--android:format="@color/colorAccent" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_finished_color"-->
-            <!--android:format="@color/colorAccent" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_text_size"-->
-            <!--android:format="17sp" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_text_color"-->
-            <!--android:format="@color/colorAccent" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_suffix_text"-->
-            <!--android:format="string" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_suffix_text_size"-->
-            <!--android:format="17sp" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_suffix_text_padding"-->
-            <!--android:format="5dp" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_bottom_text"-->
-            <!--android:format="string" />-->
-
-        <!--<attr-->
-            <!--android:name="arc_bottom_text_size"-->
-            <!--android:format="17sp" />-->
-    <!--</declare-styleable>-->
 
     <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
         android:id="@+id/progress_1"
@@ -203,6 +196,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_1"
         app:srcCompat="@drawable/a1" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="145dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="달성률 45%"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

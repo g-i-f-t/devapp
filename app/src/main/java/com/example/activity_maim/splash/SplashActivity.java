@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.activity_maim.R;
-import com.example.activity_maim.activity_login;
+import com.example.activity_maim.login.activity_login;
 import com.example.activity_maim.activity_main;
 
 import java.util.Timer;
@@ -36,6 +36,7 @@ public class SplashActivity extends AppCompatActivity {
         profileManager = new ProfileManager();
         limitLoadingTimer = new Timer();
         initView();
+        System.out.println("LoginKey!!!!!:  " + profileManager.getLoginKey(this).get("userSeqNo"));
         makeAlert();
         LogSearch();
     }

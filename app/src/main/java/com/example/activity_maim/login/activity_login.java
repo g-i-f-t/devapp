@@ -1,8 +1,11 @@
-package com.example.activity_maim;
+package com.example.activity_maim.login;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 
+import com.example.activity_maim.HashSerivce;
+import com.example.activity_maim.R;
+import com.example.activity_maim.activity_main;
 import com.example.activity_maim.signup.SignUpActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AlertDialog;
@@ -33,6 +36,7 @@ public class activity_login extends AppCompatActivity {
 
     private TextView signup;
     private Button btn;
+    private registDB loginTask;
     TextInputEditText et_id, et_pw;
     String sld, sPw;
 
@@ -45,7 +49,6 @@ public class activity_login extends AppCompatActivity {
         et_pw = (TextInputEditText)findViewById(R.id.et_pw);
 
         bt_Join();
-
 //        signup=findViewById(R.id.signup);
 //        signup.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -144,8 +147,6 @@ public class activity_login extends AppCompatActivity {
 
 
     public class registDB extends AsyncTask<String, Void, JSONObject> {
-
-
         @Override
         protected JSONObject doInBackground(String ... unused) {
 

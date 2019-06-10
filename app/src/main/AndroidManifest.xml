@@ -15,25 +15,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".withdraw"></activity>
+        <activity android:name=".login.activity_looooading"></activity>
+        <activity android:name=".withdraw" />
         <activity android:name=".fundingmain1" />
         <activity android:name=".money" />
         <activity android:name=".fundin" />
         <activity android:name=".fundlist" />
         <activity android:name=".fundingmain" />
-        <activity android:name=".activity_login"/>
+        <activity android:name=".login.activity_login" />
         <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activity_register" />
         <activity android:name=".activity_main" />
         <activity android:name=".bir_insert" />
-        <activity android:name=".signup.SignUpActivity"/>
-        <activity android:name=".signup.Login_API"/>
-        <activity android:name=".signup.Login_API2"/>
+        <activity android:name=".signup.SignUpActivity" />
+        <activity android:name=".signup.Login_API" />
+        <activity android:name=".signup.Login_API2" />
     </application>
 
 </manifest>

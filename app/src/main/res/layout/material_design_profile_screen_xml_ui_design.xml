@@ -11,8 +11,8 @@
             android:id="@+id/header_cover_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:orientation="horizontal"
-            android:background="@color/design_default_color_primary"/>
+            android:background="@color/colorAccent"
+            android:orientation="horizontal" />
 
         <ImageButton
             android:id="@+id/user_profile_photo"
@@ -31,10 +31,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/header_cover_image"
-            android:background="@color/design_default_color_primary_dark"
+            android:background="@color/colorAccent"
             android:elevation="4dp"
             android:paddingBottom="24dp">
-
 
 
             <TextView

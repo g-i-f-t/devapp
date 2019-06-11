@@ -21,6 +21,7 @@ public class RoomLog {
             for(User user: users)
                 roomUserDao.add(user);
             final String result = roomUserDao.getAll().get(0).getUserSeqNo();
+            System.out.println("Task입니당::???" +  roomUserDao.getAll().get(0).getUserSeqNo());
 
             return null;
         }

@@ -94,6 +94,7 @@ public class activity_looooading extends AppCompatActivity {
         UserDao roomUserDao = AppDatabase.getInstance(this).roomUserDao();
         try {
             new RoomLog.addDBTask(roomUserDao).execute(user).get();
+
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

@@ -43,13 +43,13 @@ public class ProfileManager {
         LoginVO result;
         try {
                     result = netWorkTask.execute().get();
-            System.out.println("@@@@@@@@@@@@@@@"+result.getCode());
                     if (result.getCode() == 200) {
-//                        Profile profile = new Profile();
-//                        profile.setName(result.getName());
-//                        profile.setEmail(result.getEmail());
-//
-//                        ((GiftApplication) activity.getApplication()).setUserInfo(profile);
+                        Profile profile = new Profile();
+                        profile.setName(result.getName());
+                        profile.setEmail(result.getEmail());
+                        System.out.println(profile.getEmail() + profile.getName());
+                        ((GiftApplication) activity.getApplication()).setUserInfo(profile);
+
                 callback.callback();
             }
         } catch (Exception e) {

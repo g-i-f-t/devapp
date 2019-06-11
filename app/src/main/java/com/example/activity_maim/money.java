@@ -24,7 +24,7 @@ public class money extends AppCompatActivity {
         View.OnClickListener add1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addIntent = new Intent(money.this, fundin.class);
+                Intent addIntent = new Intent(money.this, AddGames.class);
                 money.this.startActivity(addIntent);
             }
         };

@@ -23,7 +23,6 @@ public class fundingmain extends AppCompatActivity {
         progress1.setProgressBackgroundColor(Color.parseColor("#ddd9da"));
         progress1.setProgressColor(Color.parseColor("#ffe100"));
 
-
         progress1.setMax(100);
         progress1.setProgress(45);
 

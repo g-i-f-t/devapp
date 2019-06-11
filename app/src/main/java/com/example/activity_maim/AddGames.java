@@ -1,10 +1,6 @@
 package com.example.activity_maim;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -12,25 +8,19 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.example.activity_maim.splash.ProfileManager;
+import com.example.activity_maim.splash.RoomLog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,13 +36,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 
-public class fundin extends AppCompatActivity {
-
+public class AddGames extends AppCompatActivity {
+    private ProfileManager profileManager;
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView imageview;
     private String names,contents;
@@ -67,15 +55,13 @@ public class fundin extends AppCompatActivity {
     JSONObject gamevo;
     JSONArray arr;
 
-
-
-
     ArrayList<String> list;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fundin);
+        profileManager = new ProfileManager();
 
         Button btn2=(Button)findViewById(R.id.btn2);
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +122,7 @@ public class fundin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(count>3){
-                    AlertDialog.Builder dialog=new AlertDialog.Builder(fundin.this);
+                    AlertDialog.Builder dialog=new AlertDialog.Builder(AddGames.this);
 
                         dialog
                                 .setTitle("알림")
@@ -161,18 +147,13 @@ public class fundin extends AppCompatActivity {
         content = (EditText) findViewById(R.id.content);
     }
 
-
-
-
     private void initData(){
-
-
+        String userSeqId = profileManager.getLoginKey(this).get("userSeqNo");
         gamevo=new JSONObject();
         try {
             obj.put("category",category);
             obj.put("companyIntroduction","무엇을 넣나요");
             obj.put("currentPrice","0");
-
 
             obj.put("gameInformation",content.getText().toString());
             obj.put("goalPrice",Long.valueOf(goalPrice.getText().toString()));
@@ -182,21 +163,14 @@ public class fundin extends AppCompatActivity {
             obj.put("profileImage","http://117.17.102.139:8080/fusrb.jpg");
             obj.put("success",false);
 
-
-
-
             gamevo.put("game",obj);
-            gamevo.put("userSeqId","1100035123");
+            gamevo.put("userSeqId",userSeqId);
             gamevo.put("gameDescribeImages",arr);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 
     private void initSpinner(){
         Spinner s = (Spinner) findViewById(R.id.spinner);
@@ -243,11 +217,11 @@ public class fundin extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                AlertDialog.Builder dialog=new AlertDialog.Builder(fundin.this);
+                AlertDialog.Builder dialog=new AlertDialog.Builder(AddGames.this);
                 try {
                     if(result.getInt("code") == 200){
                         Log.e("RESULT","저장성공");
-                        Intent intent=new Intent(fundin.this,fundlist.class);
+                        Intent intent=new Intent(AddGames.this,fundlist.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
@@ -268,27 +242,15 @@ public class fundin extends AppCompatActivity {
                         AlertDialog show = dialog.show();
 //                        Intent loginfIntent = new Intent(activity_login.this, activity_login.class);
 //                        activity_login.this.startActivity(loginfIntent);
-
-
-
 //                        출처: https://cholol.tistory.com/404?category=572900 [IT, I Think ]
-
-
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-
-
-
         });
-
-
     }
     public class saveGame extends AsyncTask<String, Void, JSONObject> {
-
-
         @Override
         protected JSONObject doInBackground(String ... unused) {
 

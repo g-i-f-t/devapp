@@ -20,11 +20,12 @@
         <activity android:name=".withdraw" />
         <activity android:name=".fundingmain1" />
         <activity android:name=".money" />
-        <activity android:name=".fundin" />
+        <activity android:name=".AddGames" />
         <activity android:name=".fundlist" />
         <activity android:name=".fundingmain" />
         <activity android:name=".login.activity_login" />
-        <activity android:name=".splash.SplashActivity">
+        <activity android:name=".splash.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

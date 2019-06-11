@@ -25,7 +25,7 @@ public class fundlist extends AppCompatActivity {
         View.OnClickListener add1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addIntent = new Intent(fundlist.this, fundin.class);
+                Intent addIntent = new Intent(fundlist.this, AddGames.class);
                 fundlist.this.startActivity(addIntent);
             }
         };
@@ -33,8 +33,6 @@ public class fundlist extends AppCompatActivity {
         floatingActionButton.setOnClickListener(add1);
         init();
         getData();
-
-
     }
 
 

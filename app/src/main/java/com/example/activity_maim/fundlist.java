@@ -66,7 +66,7 @@ public class fundlist extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new Funding_list_adapter(new Funding_list_adapter.Callback() {
+        adapter = new Funding_list_adapter(getData(), new Funding_list_adapter.Callback() {
 
             @Override
             public void onCallback() {
@@ -77,19 +77,20 @@ public class fundlist extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void getData() {
+    private List<GameVO> getData() {
         String userSeqId = profileManager.getLoginKey(this).get("userSeqNo");
         String url = "http://117.17.102.139:8080/game/developer/" + userSeqId;
         FundingTask fundingTask = new FundingTask(url);
+        List<GameVO> result = null;
         try {
-            List<GameVO> result = fundingTask.execute().get();
-            for(GameVO gameVO : result)
-                System.out.println(gameVO.getName());
+            result = fundingTask.execute().get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        return result;
     }
 
     private class FundingTask extends AsyncTask<Void, Void, List<GameVO>> {

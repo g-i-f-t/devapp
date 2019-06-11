@@ -1,6 +1,7 @@
 package com.example.activity_maim.adapter;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +11,22 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.activity_maim.Data;
+import com.example.activity_maim.DownloadImageTask;
 import com.example.activity_maim.R;
+import com.example.activity_maim.VO.GameVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Funding_list_adapter extends RecyclerView.Adapter<Funding_list_adapter.ItemViewHolder> {
 
     // adapter에 들어갈 list 입니다.
-    private ArrayList<Data> listData = new ArrayList<>();
+    private List<GameVO> listData;
     private Funding_list_adapter.Callback callback;
+    private ConstraintLayout constraintLayout;
 
-    public Funding_list_adapter(Funding_list_adapter.Callback callback) {
+    public Funding_list_adapter(List<GameVO> data, Callback callback) {
+        this.listData = data;
         this.callback = callback;
     }
 
@@ -36,6 +42,7 @@ public class Funding_list_adapter extends RecyclerView.Adapter<Funding_list_adap
     @Override
     public void onBindViewHolder(@NonNull final ItemViewHolder holder, int position) {
         // Item을 하나, 하나 보여주는(bind 되는) 함수입니다.
+//        holder.idText.setText(listData.get(position).getName());
         holder.getLinearLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +50,7 @@ public class Funding_list_adapter extends RecyclerView.Adapter<Funding_list_adap
             }
         });
         holder.onBind(listData.get(position));
+
     }
 
     @Override
@@ -51,10 +59,10 @@ public class Funding_list_adapter extends RecyclerView.Adapter<Funding_list_adap
         return listData.size();
     }
 
-    public void addItem(Data data) {
-        // 외부에서 item을 추가시킬 함수입니다.
-        listData.add(data);
-    }
+//    public void addItem(Data data) {
+//        // 외부에서 item을 추가시킬 함수입니다.
+//        listData.add(data);
+//    }
 
     public interface Callback {
         public void onCallback();
@@ -66,6 +74,7 @@ public class Funding_list_adapter extends RecyclerView.Adapter<Funding_list_adap
 
         private TextView textView1;
         private TextView textView2;
+        private TextView idText;
         private ImageView imageView;
 
         public LinearLayout getLinearLayout() {
@@ -79,14 +88,16 @@ public class Funding_list_adapter extends RecyclerView.Adapter<Funding_list_adap
 
             textView1 = itemView.findViewById(R.id.textView1);
             textView2 = itemView.findViewById(R.id.textView2);
+            idText = itemView.findViewById(R.id.idText);
             imageView = itemView.findViewById(R.id.imageView);
             linearLayout = itemView.findViewById(R.id.list_item_layout);
         }
 
-        void onBind(Data data) {
-            textView1.setText(data.getTitle());
-            textView2.setText(data.getContent());
-            imageView.setImageResource(data.getResId());
+        void onBind(GameVO data) {
+            textView1.setText(data.getName());
+            textView2.setText(data.getCategory());
+
+            new DownloadImageTask(imageView).execute(data.getProfileImage());
 
 //            itemView.setOnClickListener((View.OnClickListener) this);
 //            textView1.setOnClickListener((View.OnClickListener) this);

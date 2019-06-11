@@ -1,4 +1,4 @@
-package com.example.activity_maim;
+package com.example.activity_maim.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,21 +9,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.activity_maim.Data;
+import com.example.activity_maim.R;
+
 import java.util.ArrayList;
 
-public class Funding_list_adapter extends RecyclerView.Adapter<Funding_list_adapter.ItemViewHolder> {
+public class Funding_list_adapter1 extends RecyclerView.Adapter<Funding_list_adapter1.ItemViewHolder> {
 
-    // adapter에 들어갈 list 입니다.
+        // adapter에 들어갈 list 입니다.
     private ArrayList<Data> listData = new ArrayList<>();
     private Funding_list_adapter.Callback callback;
 
-    public Funding_list_adapter(Funding_list_adapter.Callback callback) {
+    public Funding_list_adapter1(Funding_list_adapter.Callback callback) {
         this.callback = callback;
     }
 
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+
+
         // LayoutInflater를 이용하여 전 단계에서 만들었던 item.xml을 inflate 시킵니다.
         // return 인자는 ViewHolder 입니다.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
@@ -48,7 +54,7 @@ public class Funding_list_adapter extends RecyclerView.Adapter<Funding_list_adap
         return listData.size();
     }
 
-    void addItem(Data data) {
+    public void addItem(Data data) {
         // 외부에서 item을 추가시킬 함수입니다.
         listData.add(data);
     }

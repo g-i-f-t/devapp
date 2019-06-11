@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
+import com.example.activity_maim.adapter.Funding_list_adapter;
+import com.example.activity_maim.adapter.Funding_list_adapter1;
+
 import java.util.Arrays;
 import java.util.List;
 

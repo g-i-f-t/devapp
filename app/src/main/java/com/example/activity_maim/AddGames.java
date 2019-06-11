@@ -20,7 +20,6 @@ import android.widget.Spinner;
 
 import com.bumptech.glide.Glide;
 import com.example.activity_maim.splash.ProfileManager;
-import com.example.activity_maim.splash.RoomLog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,7 +59,7 @@ public class AddGames extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fundin);
+        setContentView(R.layout.add_games);
         profileManager = new ProfileManager();
 
         Button btn2=(Button)findViewById(R.id.btn2);
@@ -81,15 +80,11 @@ public class AddGames extends AppCompatActivity {
         initSpinner();
         ClickSave();
         initImage();
-
     }
     public void onclick(){
         Intent btnIntent = new Intent(Intent.ACTION_PICK);
         btnIntent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         startActivityForResult(btnIntent, GET_GALLERY_IMAGE);
-
-
-
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -123,7 +118,6 @@ public class AddGames extends AppCompatActivity {
             public void onClick(View v) {
                 if(count>3){
                     AlertDialog.Builder dialog=new AlertDialog.Builder(AddGames.this);
-
                         dialog
                                 .setTitle("알림")
                                 .setMessage("최대 4개의 사진만 저장 가능합니다.")
@@ -160,7 +154,7 @@ public class AddGames extends AppCompatActivity {
             obj.put("investmentCondition",invecond.getText().toString());
             obj.put("investmentInformation",inveinfo.getText().toString());
             obj.put("name",name.getText().toString());
-            obj.put("profileImage","http://117.17.102.139:8080/fusrb.jpg");
+            obj.put("profileImage","http://117.17.102.139:8080/default_images.jpg");
             obj.put("success",false);
 
             gamevo.put("game",obj);
@@ -253,7 +247,6 @@ public class AddGames extends AppCompatActivity {
     public class saveGame extends AsyncTask<String, Void, JSONObject> {
         @Override
         protected JSONObject doInBackground(String ... unused) {
-
             System.out.println("start");
             /* 인풋 파라메터값 생성 */
             JSONObject result = null;
